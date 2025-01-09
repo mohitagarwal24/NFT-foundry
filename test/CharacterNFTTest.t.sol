@@ -19,8 +19,7 @@ contract CharacterNFTTest is Test {
         string memory expectedName = "Character";
         string memory actualName = characterNft.name();
         assert(
-            keccak256(abi.encode(expectedName)) ==
-                keccak256(abi.encode(actualName)) // We did this because natively these strings are stored in the form of arrays
+            keccak256(abi.encode(expectedName)) == keccak256(abi.encode(actualName)) // We did this because natively these strings are stored in the form of arrays
         );
     }
 
@@ -31,5 +30,4 @@ contract CharacterNFTTest is Test {
         assert(characterNft.balanceOf(USER) == 1);
         assertEq(uri, characterNft.tokenURI(0));
     }
-
 }

@@ -9,8 +9,7 @@ contract BasicNFTTest is Test {
     DeployBasicNFT public deployer;
     BasicNFT public basicnft;
     address public USER = makeAddr("user");
-    string public PUG_URI =
-        "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
+    string public PUG_URI = "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
 
     function setUp() public {
         deployer = new DeployBasicNFT();
@@ -22,8 +21,7 @@ contract BasicNFTTest is Test {
         string memory expectedName = "Dogie";
         string memory actualName = basicnft.name();
         assert(
-            keccak256(abi.encode(expectedName)) ==
-                keccak256(abi.encode(actualName)) // We did this because natively these strings are stored in the form of arrays
+            keccak256(abi.encode(expectedName)) == keccak256(abi.encode(actualName)) // We did this because natively these strings are stored in the form of arrays
         );
     }
 

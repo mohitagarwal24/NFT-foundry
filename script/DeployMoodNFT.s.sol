@@ -7,7 +7,8 @@ import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
 contract DeployMoodNFT is Script {
     MoodNFT private moodNft;
-    function run() external returns (MoodNFT){
+
+    function run() external returns (MoodNFT) {
         // in order to read svg file we have already set up access in toml file and we are ready to use cheat code
         string memory sadSVG = vm.readFile("./img/sad.svg");
         string memory happySVG = vm.readFile("./img/happy.svg");
@@ -17,7 +18,7 @@ contract DeployMoodNFT is Script {
         return moodNft;
     }
 
-    function svgToImageUri(string memory svg) public pure returns (string memory){
+    function svgToImageUri(string memory svg) public pure returns (string memory) {
         string memory baseUri = "data:image/svg+xml;base64,";
         string memory svgbase64encode = Base64.encode(bytes(string(abi.encodePacked(svg))));
         return string(abi.encodePacked(baseUri, svgbase64encode));

@@ -8,14 +8,10 @@ import {MoodNFT} from "../src/MoodNFT.sol";
 import {CharacterNFT} from "../src/CharacterNFT.sol";
 
 contract MintBasicNft is Script {
-    string public PUG_URI =
-        "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
+    string public PUG_URI = "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
 
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "BasicNFT",
-            block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("BasicNFT", block.chainid);
         mintNFTonContract(mostRecentlyDeployed);
     }
 
@@ -27,10 +23,7 @@ contract MintBasicNft is Script {
 
 contract MintMoodNft is Script {
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "MoodNFT",
-            block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("MoodNFT", block.chainid);
         mintNFTonContract(mostRecentlyDeployed);
     }
 
@@ -40,17 +33,15 @@ contract MintMoodNft is Script {
     }
 }
 
-contract FlipMoodNft is Script{
+contract FlipMoodNft is Script {
     uint256 private s_tokenId;
+
     constructor(uint256 tokenId) {
-        s_tokenId=tokenId;
+        s_tokenId = tokenId;
     }
 
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "MoodNFT",
-            block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("MoodNFT", block.chainid);
         flipNftonContract(mostRecentlyDeployed);
     }
 
@@ -60,13 +51,10 @@ contract FlipMoodNft is Script{
     }
 }
 
-// by deafult mints doraemon 
+// by deafult mints doraemon
 contract MintCharacterNft is Script {
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "CharacterNFT",
-            block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("CharacterNFT", block.chainid);
         mintNFTonContract(mostRecentlyDeployed);
     }
 
@@ -74,6 +62,4 @@ contract MintCharacterNft is Script {
         vm.startBroadcast();
         CharacterNFT(contractAddress).MintNft("Doraemon");
     }
-} 
-
-
+}
